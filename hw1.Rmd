@@ -62,3 +62,57 @@ mpg %>%
 
 ```
 It looks like a bimodal distribution with peaks at hwy=16 and hwy=26.
+
+## E2
+
+```{r}
+mpg %>%
+  ggplot(aes(x=hwy, y=cty)) + geom_point()
+```
+This plot is linear, there is a positive relationship between hwy and cty. This means that city miles per gallon increases with highway miles per gallon. 
+
+## E3
+
+```{r}
+mpg %>%
+  ggplot(aes(y=reorder(manufacturer,manufacturer,
+                     function(y)-length(y)))) + geom_bar() + ylab("manufacturer")
+
+```
+Dodge produced the most cars, Lincoln the least.
+
+## E4
+
+```{r}
+mpg %>%
+  ggplot(aes(hwy, group=cyl))+geom_boxplot()
+```
+I dont know how to read these.
+
+## E5
+
+```{r}
+library(corrplot)
+```
+
+```{r}
+df1 <- data.frame(mpg)
+M = cor(df1[,c("displ","year","cyl","cty","hwy")]) # subsetting for only numeric values
+corrplot(M, method="number", type="lower")
+```
+
+Positive correlations: 
+- displ (engine displacement) and year (of manufacture)
+- displ and cyl (number of cylinders)
+- cyl and year
+- hwy (highway miles per gallon) and year
+- hwy and cty (city miles per gallon)
+
+Negative correlations:
+- cty and displ
+- hwy and displ
+- cty and year
+- cty and cyl
+- hwy and cyl
+
+Most of these relationships make sense to me, city and highway mpg should share positive correlation. It surprises me that year doesn't have a strong correlation (positive or negative) with any other feature. 

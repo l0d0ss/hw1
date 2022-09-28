@@ -1,0 +1,53 @@
+---
+title: "PSTAT 131 hw1"
+author: "Katlyn Shaw"
+date: "9/27/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Machine Learning Main Ideas
+
+## Q1
+
+Supervised learning involves predicting a future response from the input (predictors), whereas in unsupervised learning there is no response, instead the goal is to describe associations and patterns from the input.
+
+## Q2
+
+In regression models, the response (Y) is quantitative and in classification models the response (Y) is qualitative. We'll want to use linear regression when quantitative and logistic regression when qualitative.
+
+## Q3
+
+Two commonly used metrics for regression ML problems are training MSE and test MSE. Two for classification ML are training error rate and test error rate.
+
+## Q4
+
+- Descriptive Models visually emphasizes trend in data
+- Inferential Models state relationship between input and response
+- Predictive Models predict response with minimum reducible error
+
+## Q5
+
+- Mechanistic/parametric: Assumes a parametric form for $f$ to estimate a set of parameters.
+- empirically driven/non-parametric: Makes no explicit assumption about $f$ they seek an estimate of f that gets as close to the data points as possible without being too rough or wiggly.
+
+I think in general a mechanistic model is easier to understand because instead of estimating $f$ you're simplifying the problem by only estimating a set of parameters.
+
+Empirically driven models are more variable and less biased compared to mechanistic models by default. So, you need to consider the bias-variance trade-off when choosing mechanistic or empirically driven models.
+
+## Q6
+
+- Given a voter’s profile/data, how likely is it that they will vote in favor of the candidate?
+Predictive. We are predicting Y (response) from input.
+
+- How would a voter’s likelihood of support for the candidate change if they had personal contact with the candidate?
+Inferential. We are infering the relationship between different predictors.
+
+# Exploratory Data Analysis
+
+## E1
+
+

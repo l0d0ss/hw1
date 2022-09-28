@@ -50,4 +50,15 @@ Inferential. We are infering the relationship between different predictors.
 
 ## E1
 
+```{r}
+library(tidyverse)
+library(tidymodels)
+library(ISLR)
+```
 
+```{r}
+mpg %>%
+  ggplot(aes(x=hwy)) + geom_histogram()
+
+```
+It looks like a bimodal distribution with peaks at hwy=16 and hwy=26.

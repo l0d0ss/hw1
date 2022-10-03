@@ -7,6 +7,11 @@ output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+# load packages
+library(tidyverse)
+library(tidymodels)
+library(ISLR)
+library(corrplot)
 ```
 
 # Machine Learning Main Ideas
@@ -44,23 +49,18 @@ Empirically driven models are more variable and less biased compared to mechanis
 Predictive. We are predicting Y (response) from input.
 
 - How would a voter’s likelihood of support for the candidate change if they had personal contact with the candidate?
-Inferential. We are infering the relationship between different predictors.
+Inferential. We are inferring the relationship between different predictors.
 
 # Exploratory Data Analysis
 
 ## E1
 
 ```{r}
-library(tidyverse)
-library(tidymodels)
-library(ISLR)
-```
-
-```{r}
 mpg %>%
   ggplot(aes(x=hwy)) + geom_histogram()
 
 ```
+
 It looks like a bimodal distribution with peaks at hwy=16 and hwy=26.
 
 ## E2
@@ -69,6 +69,7 @@ It looks like a bimodal distribution with peaks at hwy=16 and hwy=26.
 mpg %>%
   ggplot(aes(x=hwy, y=cty)) + geom_point()
 ```
+
 This plot is linear, there is a positive relationship between hwy and cty. This means that city miles per gallon increases with highway miles per gallon. 
 
 ## E3
@@ -79,6 +80,7 @@ mpg %>%
                      function(y)-length(y)))) + geom_bar() + ylab("manufacturer")
 
 ```
+
 Dodge produced the most cars, Lincoln the least.
 
 ## E4
@@ -87,13 +89,10 @@ Dodge produced the most cars, Lincoln the least.
 mpg %>%
   ggplot(aes(hwy, group=cyl))+geom_boxplot()
 ```
-I dont know how to read these.
+
+I notice that as cyl decreases, hwy *generally* increases.
 
 ## E5
-
-```{r}
-library(corrplot)
-```
 
 ```{r}
 df1 <- data.frame(mpg)
@@ -102,17 +101,29 @@ corrplot(M, method="number", type="lower")
 ```
 
 Positive correlations: 
+
 - displ (engine displacement) and year (of manufacture)
+
 - displ and cyl (number of cylinders)
+
 - cyl and year
+
 - hwy (highway miles per gallon) and year
+
 - hwy and cty (city miles per gallon)
 
+
 Negative correlations:
+
 - cty and displ
+
 - hwy and displ
+
 - cty and year
+
 - cty and cyl
+
 - hwy and cyl
+
 
 Most of these relationships make sense to me, city and highway mpg should share positive correlation. It surprises me that year doesn't have a strong correlation (positive or negative) with any other feature. 
